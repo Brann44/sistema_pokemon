@@ -1,0 +1,47 @@
+# Laravel / Backend
+back/vendor/
+back/node_modules/
+back/npm-debug.log
+back/yarn-error.log
+back/.env
+back/.env.backup
+back/.env.production
+back/.phpunit.result.cache
+back/storage/*.key
+back/storage/logs/*.log
+back/storage/framework/cache/data/*
+back/storage/framework/sessions/*
+back/storage/framework/views/*
+back/bootstrap/cache/*
+
+# Flutter / Frontend
+front/.dart_tool/
+front/.flutter-plugins
+front/.flutter-plugins-dependencies
+front/.packages
+front/.pub-cache/
+front/.pub/
+front/build/
+front/ios/Flutter/Generated.xcconfig
+front/ios/Flutter/app.framework
+front/ios/Flutter/Flutter.framework
+front/ios/Flutter/Flutter.podspec
+front/ios/Pods/
+front/ios/.symlinks/
+front/android/app/build/
+front/android/.gradle
+front/windows/flutter/ephemeral/
+front/linux/flutter/ephemeral/
+front/macos/Flutter/ephemeral/
+
+# Docker
+docker/pgdata/
+docker/data/
+
+# IDEs and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
