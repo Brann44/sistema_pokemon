@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pokemon_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pokemon_db
+      POSTGRES_USER: pokemon_user
+      POSTGRES_PASSWORD: pokemon_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - pokemon_network
+
+  laravel_app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: pokemon_laravel
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./back:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: pokemon_db
+      DB_USERNAME: pokemon_user
+      DB_PASSWORD: pokemon_password
+    depends_on:
+      - postgres
+    networks:
+      - pokemon_network
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  pokemon_network:
+    driver: bridge
